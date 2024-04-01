@@ -1,0 +1,14 @@
+created: 20231024141726397
+creator: kina0630
+modified: 20231024143923057
+modifier: kina0630
+tags: 学习 网络
+title: 搭建noVNC实现远程访问桌面
+type: text/vnd.tiddlywiki
+
+装了路由器之后不能浪费，还有不能浪费校园网的公网ip，参照网上教程现在Windows上配置了noVNC服务，Windows端采用推荐的UltraVNC应用，然后在路由器里配置了端口转发，让路由器处理来自外网设备对内网设备的访问请求，不知道是协议没有配置对还是端口范围没有配置对，目前的设置是采用TCP与UDP两者的协议，端口范围与本地端口设置为一样的(不得不吐槽一下Padavan的端口转发配置说明，根本看不懂。。)，还顺带了解了NAT的类型，果然计网是很有意思的
+
+整体方案没有什么困难的地方，并且noVNC的流畅度也让人非常满意，等新买的主机到货以后就将主要服务迁移至主机上
+
+!!! 参考链接:
+1.All in Web | 基于web的远程桌面-noVNC https://zhuanlan.zhihu.com/p/427144657

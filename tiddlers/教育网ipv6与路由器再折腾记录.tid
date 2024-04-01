@@ -1,0 +1,20 @@
+created: 20240227151405146
+creator: TidGi User
+modified: 20240307113152302
+modifier: kina0630
+tags: 网络 折腾 linux
+title: 教育网ipv6与路由器再折腾记录
+
+写于2024.02.27
+
+去年10月折腾路由器固件(OpenWRT)希望实现教育网全设备ipv6稳定覆盖但失败了，因为教育网ipv6为128位前缀下发，只提供给一个设备使用，在网上找到的OpenWRT固件都不够稳定，最后无奈换回了自带的Padavan固件
+
+前几天在网上浏览时发现了Padavan固件存在使用NAT6解决教育网ipv6问题的方法，进一步查找资料得知Padavan的Linux内核原生不支持ipv6的NAT，需要借用NAPT66来实现ipv6的NAT，其中NAPT66是北邮学生开发的在较旧内核的Linux上实现ipv6 nat的内核模块
+
+NAPT66项目地址：[ext[https://github.com/mzweilin/napt66]]
+
+Padavan源码项目地址：[ext[https://github.com/hanwckf/rt-n56u]]
+
+根据教程：[ext[https://www.jianshu.com/p/eb07eaac6167]] 外加自行搜索，在网络上找到了两份napt66.ko，在挂载时均报错，查看log与搜索得知为.ko文件与固件内核版本不对应，我使用的内核版本里启用了smp，搜索网络上没有找到，只好自行编译
+
+编译过程也踩了不少坑。首先是编译环境的准备，之前把archlinux系统删除后，转向了wsl2(ArchLinux)，这也是第一次正式使用wsl2。利用git clone Padavan源码因为网络问题失败，不得已换用云服务器(Ubuntu)，但是因为云服务器配置不够，编译速度可怜(1个半小时还没有编译完成)，睡觉前使用tmux在后台编译，结果第二天醒过来后发现服务器炸了，不得已重启才恢复正常。换回wsl2后费了一番功夫才将环境准备好，之后是查询如何开启smp支持，menuconfig中没找到对应选项，尝试在对应编译设置文件.config文件中加入一行CONFIG_SMP=y之后，编译，挂载，未报错，且webui的其他服务中出现了napt66的选项，之后测试各设备ipv6似乎是正常了。

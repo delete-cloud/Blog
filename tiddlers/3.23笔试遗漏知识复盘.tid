@@ -1,0 +1,31 @@
+created: 20240323152351742
+creator: kina0630
+modified: 20240326082201513
+modifier: kina0630
+tags: 学习
+title: 3.23笔试遗漏知识复盘
+
+!! 1.排序一个乱序数组需要的最少次数
+来源美团运维岗笔试编程第2题(后台开发貌似是5道题的第3题)，牛客有佬给出的思路是用图解决，需要交换的两个顶点连边，交换次数为环的边数-1，总交换次数为所有环的贡献之和，用dfs做，很可惜自己dfs还是不会，需要加强练习
+
+!! 2.mtime命令
+Linux中并没有一个叫做mtime的命令。不过，mtime通常用于描述文件系统中的“修改时间”（modification time），它表示的是文件内容最后一次被修改的时间。
+
+!! 3.tail -n/-c
+[img[tail_gpt.png]]
+
+!! 4.数据库查询时拆分组合查询的好处
+[img[sjkcfcx.png]]
+[img[lock_compete.png]]
+
+!! 5.mysql的binlog
+[img[image.png]]
+
+!! 6.mysql的@运算符以及case when.. / if..
+
+!! 7.golang中的c := make(chan int, 5)
+c <- 5
+c <- 6
+fmt.Println(c <-)
+
+问上面这段程序输出什么

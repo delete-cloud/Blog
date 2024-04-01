@@ -1,0 +1,10 @@
+created: 20230817042225234
+creator: kina0630
+modified: 20230817042556025
+modifier: kina0630
+tags: linux 数据库 学习
+title: 在Ubuntu服务器部署PostgreSQL
+
+知乎上这篇文章写的非常详细
+https://zhuanlan.zhihu.com/p/467644334
+外网服务器连接确实比较慢，开学会考虑买树莓派部署在上面，然后用frp实现外网访问，国内服务器的价格还需要再观望一下

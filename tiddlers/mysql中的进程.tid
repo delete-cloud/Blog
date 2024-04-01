@@ -1,0 +1,14 @@
+created: 20240322053150942
+creator: kina0630
+modified: 20240322053959548
+modifier: kina0630
+tags: 数据库
+title: mysql中的进程
+
+腾讯一面中的问题，如何查询mysql相关进程，假如有1号进程与50000+号进程，分别代表什么
+
+正确操作是进入mysql命令行，输入SHOW FULL PROCESELIST;命令查询
+[img[mysql_process.png]]
+
+gpt:
+[img[gpt_mysql.png]]

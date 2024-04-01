@@ -1,0 +1,21 @@
+created: 20231017092242648
+creator: kina0630
+modified: 20231017114254845
+modifier: kina0630
+tags: linux 学习 折腾 网络
+title: 自建Git服务+SSL部署+Nginx配置反向代理记录
+
+!! 提示：自建Git服务起源于尝试搭建记账服务，目的是个人信息隐私？不过似乎离目的比较远
+
+起因是看到谷神的记账服务搭建的博客[https://blog.kaaass.net/archives/1700]，其中提到了仓库的同步方式，谷神自己用的是gitea，于是我就借鉴了一下，顺带修复一下之前的nginx服务以及ssl的部署
+
+gitea的部署服务比较顺利，参照官方的文档[https://docs.gitea.com/zh-cn/]一步一步来即可，给gitea的服务建立了一个单独的数据库账号与linux用户，最后是祖传的忘记开防火墙端口环节(喜闻乐见了属于是)
+
+!! 然后是历史遗留问题：ssl部署
+
+折腾半天，发现服务器内有两个nginx，一个是之前通过apt安装的，另一个是通过wget安装的，也难怪之前通过wget安装时无论怎么修改nginx配置文件都不生效了。。后来将apt安装的nginx彻底卸载，不过与nginx相关的service也寄了，后续需要再修复一下
+
+之后也是成功地配置了ssl证书(用的是阿里云的免费证书，相关教程[https://help.aliyun.com/zh/ssl-certificate/user-guide/install-ssl-certificates-on-nginx-servers-or-tengine-servers#concept-n45-21x-yfb])，考虑到网址+端口号的访问方式不够优雅，搜索后了解到隐藏端口号的方式是通过配置反向代理实现路径访问，根据gitea官方文档，gitea给出了两种实现https访问的方式，第一种是gitea本身自带https服务，通过自签证书并配置实现，第二种是直接利用nginx反代，绝大多数情况应该是适用于第二种，除非服务器专门用来部署gitea服务，这对于个人用户来说有点浪费了
+
+配置反向代理方法
+[img[45791c41d03e6fa523940e01eef753f1.png]]

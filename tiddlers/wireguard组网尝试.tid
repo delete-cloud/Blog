@@ -1,0 +1,17 @@
+created: 20230822102330466
+creator: kina0630
+modified: 20230822114834044
+modifier: kina0630
+tags: 学习 网络
+title: wireguard组网尝试
+type: text/vnd.tiddlywiki
+
+先后使用wireguard-tools与wg-easy(docker环境)进行组网
+
+wireguard-tools组网理论上应该是可行的，但是每次新增设备时配置文件都比较麻烦
+
+wg-easy因为有一个webUI的界面，配置的话倒是很方便，但是不清楚为什么昨天还能组网成功，今天就ping不通了，有可能是docker的问题？反正昨天折腾ubuntu的docker安装也不是那么顺利，此方案可能宣布流产了
+
+开学后想组网的话可能还是得回归wireguard-tools了，还有考虑国内服务器，毕竟国外服务器延迟太高了。。
+
+所以现在一切等开学后再说
