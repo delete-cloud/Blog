@@ -1,2 +1,1 @@
-# kina-s_Blog
-Personal Blog
+# kina's Blog
